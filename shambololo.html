@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shambololo Lodge — Zambia Camping Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #2D5016;
+      --sand:   #C8A96E;
+      --brown:  #3B2008;
+      --cream:  #F5F0E8;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── SITE HEADER ── */
+    .site-header {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .site-header .back-link {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      color: var(--sand);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+    .site-header .back-link svg { flex-shrink: 0; }
+    .site-header .site-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: 0.85;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--green);
+      color: var(--cream);
+      padding: 3.5rem 1.25rem 3rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(1.9rem, 6vw, 3rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .hero .tagline {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      opacity: 0.85;
+      margin-bottom: 2rem;
+    }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #25D366;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+    .btn-whatsapp:hover { opacity: 0.88; }
+    .btn-whatsapp svg { flex-shrink: 0; }
+
+    /* ── QUICK FACTS BAR ── */
+    .facts-bar {
+      background: var(--sand);
+      padding: 1rem 1.25rem;
+    }
+    .facts-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.5rem;
+      justify-content: center;
+    }
+    .fact {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--brown);
+      white-space: nowrap;
+    }
+    .fact-icon { font-size: 1rem; }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 2.5rem 1.25rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    section h2 {
+      font-size: 1.4rem;
+      color: var(--green);
+      border-left: 4px solid var(--sand);
+      padding-left: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    /* ── ACCESS ── */
+    .warning-box {
+      background: #fff8e1;
+      border-left: 4px solid #e6a817;
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.4rem;
+      font-family: Arial, sans-serif;
+      font-size: 0.92rem;
+    }
+    .warning-box strong { display: block; margin-bottom: 0.3rem; color: #7a4f00; }
+    .map-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background: #d6d0c8;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #6b6256;
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      gap: 0.5rem;
+      border: 2px dashed #b5afa5;
+    }
+    .map-placeholder svg { opacity: 0.5; }
+
+    /* ── FACILITIES GRID ── */
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .facility-card {
+      background: #fff;
+      border: 1px solid #e0d8cc;
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+    .facility-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; padding-top: 0.05rem; }
+    .facility-name {
+      font-family: Arial, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .facility-desc {
+      font-family: Arial, sans-serif;
+      font-size: 0.78rem;
+      color: #7a6a56;
+      margin-top: 0.15rem;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activities-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .badge {
+      background: var(--green);
+      color: var(--cream);
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.45rem 0.9rem;
+      border-radius: 50px;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+    .photo-placeholder {
+      aspect-ratio: 4 / 3;
+      background: #c8c0b4;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-size: 0.7rem;
+      color: #6b6256;
+      gap: 0.3rem;
+      text-align: center;
+      padding: 0.5rem;
+    }
+    .photo-placeholder svg { opacity: 0.4; }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── CAMPER TIPS ── */
+    .tips-box {
+      background: #fff;
+      border: 1px solid #e0d8cc;
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+    }
+    .tip { display: flex; gap: 0.75rem; margin-bottom: 1rem; }
+    .tip:last-child { margin-bottom: 0; }
+    .tip-bullet {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--brown);
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+    .tip p { font-family: Arial, sans-serif; font-size: 0.9rem; color: var(--brown); }
+    .tip-author {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      color: #7a6a56;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ── HOW TO BOOK ── */
+    .steps { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.8rem; }
+    .step { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--green);
+      color: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .step-body h3 {
+      font-family: Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.15rem;
+    }
+    .step-body p {
+      font-family: Arial, sans-serif;
+      font-size: 0.85rem;
+      color: #5e4f3a;
+    }
+    .book-cta { text-align: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .footer-inner { max-width: 600px; margin: 0 auto; }
+    .footer-brand {
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 0.4rem;
+    }
+    .footer-tagline {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      opacity: 0.6;
+      margin-bottom: 1.3rem;
+    }
+    .social-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(245,240,232,0.3);
+      border-radius: 50px;
+      font-family: Arial, sans-serif;
+      font-size: 0.82rem;
+      color: var(--cream);
+      transition: background 0.2s;
+    }
+    .social-btn:hover { background: rgba(245,240,232,0.12); }
+    .footer-copy {
+      font-family: Arial, sans-serif;
+      font-size: 0.75rem;
+      opacity: 0.45;
+    }
+
+    /* ── ALTERNATING SECTION BACKGROUNDS ── */
+    section:nth-of-type(even) { background: #edeae2; }
+  </style>
+</head>
+<body>
+
+  <!-- ① SITE HEADER -->
+  <header class="site-header">
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back
+    </a>
+    <span class="site-title">Zambia Camping Guide</span>
+  </header>
+
+  <!-- ② HERO -->
+  <div class="hero">
+    <h1>Shambololo Lodge</h1>
+    <p class="tagline">A quiet escape on the dam &nbsp;·&nbsp; 45 minutes from Lusaka</p>
+    <a href="https://wa.me/260979337931" class="btn-whatsapp" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.057 23.943l6.256-1.641A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.031-1.374l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 0 1 2.106 12C2.106 6.53 6.53 2.106 12 2.106S21.894 6.53 21.894 12 17.47 21.894 12 21.894z"/>
+      </svg>
+      WhatsApp Clever
+    </a>
+  </div>
+
+  <!-- ③ QUICK FACTS BAR -->
+  <div class="facts-bar">
+    <div class="facts-inner">
+      <div class="fact"><span class="fact-icon">💰</span> 150 ZMW per person / night</div>
+      <div class="fact"><span class="fact-icon">🚗</span> 45 min from Lusaka</div>
+      <div class="fact"><span class="fact-icon">🍳</span> Self-catering</div>
+      <div class="fact"><span class="fact-icon">🔒</span> Fenced perimeter</div>
+    </div>
+  </div>
+
+  <!-- ④ ACCESS -->
+  <section id="access">
+    <div class="section-inner">
+      <h2>Getting There</h2>
+      <div class="warning-box">
+        <strong>⚠️ Not on Google Maps</strong>
+        Shambololo does not appear on Google Maps. Always WhatsApp Clever before arriving for directions: <strong>+260 979 337 931</strong>
+      </div>
+      <div class="map-placeholder">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        <span>Google Maps embed goes here</span>
+        <span style="font-size:0.68rem; opacity:0.7">Paste an &lt;iframe&gt; src from Google Maps</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑤ FACILITIES -->
+  <section id="facilities">
+    <div class="section-inner">
+      <h2>Facilities</h2>
+      <div class="facilities-grid">
+        <div class="facility-card">
+          <span class="facility-icon">🚽</span>
+          <div>
+            <div class="facility-name">Flush Toilet</div>
+            <div class="facility-desc">Shared ablutions on site</div>
+          </div>
+        </div>
+        <div class="facility-card">
+          <span class="facility-icon">🚿</span>
+          <div>
+            <div class="facility-name">Hot Shower</div>
+            <div class="facility-desc">Donkey boiler system</div>
+          </div>
+        </div>
+        <div class="facility-card">
+          <span class="facility-icon">💧</span>
+          <div>
+            <div class="facility-name">Water Point</div>
+            <div class="facility-desc">Fresh water on site</div>
+          </div>
+        </div>
+        <div class="facility-card">
+          <span class="facility-icon">🔥</span>
+          <div>
+            <div class="facility-name">Braai &amp; Firepit</div>
+            <div class="facility-desc">Firewood available locally</div>
+          </div>
+        </div>
+        <div class="facility-card">
+          <span class="facility-icon">🏚️</span>
+          <div>
+            <div class="facility-name">Lapa</div>
+            <div class="facility-desc">Tin-roofed shelter for shade</div>
+          </div>
+        </div>
+        <div class="facility-card">
+          <span class="facility-icon">🔐</span>
+          <div>
+            <div class="facility-name">Fenced &amp; Gated</div>
+            <div class="facility-desc">Secure perimeter overnight</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ ACTIVITIES -->
+  <section id="activities">
+    <div class="section-inner">
+      <h2>Activities</h2>
+      <div class="activities-list">
+        <span class="badge">🎣 Fishing</span>
+        <span class="badge">🛶 Canoeing</span>
+        <span class="badge">🦜 Birdwatching</span>
+        <span class="badge">🚴 Cycling</span>
+        <span class="badge">🌿 Nature Walks</span>
+        <span class="badge">🦌 Wildlife Viewing</span>
+        <span class="badge">🏹 Archery Club</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑦ GALLERY -->
+  <section id="gallery">
+    <div class="section-inner">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Dam view</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Campsite</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Lapa & braai</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Sunset</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Canoe on dam</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Birdlife</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Hot shower block</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Archery</span>
+        </div>
+        <div class="photo-placeholder">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6b6256" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Night sky</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑧ CAMPER TIPS -->
+  <section id="tips">
+    <div class="section-inner">
+      <h2>Camper Tips</h2>
+      <div class="tips-box">
+        <div class="tip">
+          <div class="tip-bullet">1</div>
+          <p>WhatsApp Clever the day before to confirm your spot — the gate is locked and he needs to know you're coming. Don't just show up.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-bullet">2</div>
+          <p>Bring everything you need. The closest shop is back towards Lusaka, roughly 25–30 minutes away. There is nothing to buy at the lodge.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-bullet">3</div>
+          <p>The donkey boiler takes about 45 minutes to heat up. Tell Clever when you plan to shower so he can start it in time.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-bullet">4</div>
+          <p>Fishing is best in the early morning. Bring your own rod and a valid Zambia Fisheries permit if you plan to keep your catch.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-bullet">5</div>
+          <p>Mosquitoes are active at dusk — long sleeves, DEET, and a net for your tent make the evenings much more pleasant.</p>
+        </div>
+        <p class="tip-author">— Tips from a repeat visitor, March 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑨ HOW TO BOOK -->
+  <section id="book">
+    <div class="section-inner">
+      <h2>How to Book</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Message Clever on WhatsApp</h3>
+            <p>Send your dates and number of campers to +260 979 337 931. He'll confirm availability and give you exact directions to the lodge.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Agree on arrival time</h3>
+            <p>The gate is kept locked. Clever needs to know when to expect you — agree on a window so he can meet you at the entrance.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Pay on arrival</h3>
+            <p>150 ZMW per person per night, paid on the day. Bring cash — there is no card machine on site.</p>
+          </div>
+        </div>
+      </div>
+      <div class="book-cta">
+        <a href="https://wa.me/260979337931" class="btn-whatsapp" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.845L.057 23.943l6.256-1.641A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.878 9.878 0 0 1-5.031-1.374l-.361-.214-3.741.981.999-3.648-.235-.374A9.867 9.867 0 0 1 2.106 12C2.106 6.53 6.53 2.106 12 2.106S21.894 6.53 21.894 12 17.47 21.894 12 21.894z"/>
+          </svg>
+          Message Clever on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑩ FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Zambia Camping Guide</div>
+      <div class="footer-tagline">Independent reviews of campsites around Zambia</div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/" class="social-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+          </svg>
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/" class="social-btn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+          Facebook
+        </a>
+      </div>
+      <div class="footer-copy">&copy; 2025 Zambia Camping Guide &mdash; All information is shared in good faith. Verify details directly with the campsite before visiting.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
