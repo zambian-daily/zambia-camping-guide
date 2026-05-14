@@ -132,7 +132,10 @@
 
     /* ── SECTIONS COMMON ── */
     section { padding: 2.5rem 1.25rem; }
-    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-inner { max-width: 860px; margin: 0 auto; padding: 0 1rem; }
+    @media (max-width: 480px) {
+      .section-inner { padding: 0 0.75rem; }
+    }
     section h2 {
       font-size: 1.4rem;
       color: var(--green);
@@ -172,30 +175,84 @@
     /* ── FACILITIES GRID ── */
     .facilities-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
     .facility-card {
       background: #fff;
       border: 1px solid #e0d8cc;
-      border-radius: 8px;
-      padding: 1rem 1.1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.7rem;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-    .facility-icon { font-size: 1.4rem; line-height: 1; flex-shrink: 0; padding-top: 0.05rem; }
     .facility-name {
       font-family: Arial, sans-serif;
-      font-size: 0.88rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--brown);
+      margin-bottom: 0.5rem;
     }
     .facility-desc {
       font-family: Arial, sans-serif;
-      font-size: 0.78rem;
-      color: #7a6a56;
-      margin-top: 0.15rem;
+      font-size: 0.9rem;
+      color: #5e4f3a;
+      line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+      .facilities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .facility-card {
+        padding: 1rem;
+      }
+      .facility-name {
+        font-size: 0.95rem;
+      }
+      .facility-desc {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* ── MAIN CAMPSITE ── */
+    .campsite-photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .campsite-photo-item {
+      text-align: center;
+    }
+    .campsite-photo-item img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .campsite-photo-item h3 {
+      font-family: Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .campsite-photos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .campsite-photo-item img {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 480px) {
+      .campsite-photos {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ── ACTIVITIES ── */
@@ -282,7 +339,32 @@
       font-style: italic;
     }
 
-    /* ── HOW TO BOOK ── */
+    /* ── VIDEOS ── */
+    .videos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+    .video-item {
+      max-width: 560px;
+      width: 100%;
+    }
+    .video-item iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 8px;
+    }
+    @media (max-width: 768px) {
+      .video-item iframe {
+        height: 250px;
+      }
+    }
+    @media (max-width: 480px) {
+      .video-item iframe {
+        height: 200px;
+      }
+    }
     .steps { display: flex; flex-direction: column; gap: 1.1rem; margin-bottom: 1.8rem; }
     .step { display: flex; gap: 1rem; align-items: flex-start; }
     .step-num {
@@ -394,23 +476,33 @@
     </div>
   </section>
 
-  <!-- ④ ACCESS -->
-  <section id="access">
+  <!-- Main Campsite -->
+  <section id="main-campsite">
     <div class="section-inner">
-      <h2>Getting There</h2>
-      <div class="warning-box">
-        <strong>Google Maps location available</strong>
-        Search for "Shambololo Campsite" on Google Maps or use the link below. Confirm exact arrival instructions with Clever before you travel.
+      <h2>Main Campsite</h2>
+      <div class="campsite-photos">
+        <div class="campsite-photo-item">
+          <img src="images/gallery-01.JPG" alt="Campsite Overview">
+          <h3>Campsite Overview</h3>
+        </div>
+        <div class="campsite-photo-item">
+          <img src="images/gallery-02.JPG" alt="Scenic Dam View">
+          <h3>Scenic Dam View</h3>
+        </div>
+        <div class="campsite-photo-item">
+          <img src="images/facility-lapa.JPG" alt="Shaded Lapa Area">
+          <h3>Shaded Lapa Area</h3>
+        </div>
+        <div class="campsite-photo-item">
+          <img src="images/gallery-06.JPG" alt="Braai and Relaxation Spot">
+          <h3>Braai and Relaxation Spot</h3>
+        </div>
       </div>
-      <p style="margin-bottom:1rem; font-family: Arial, sans-serif; font-size:0.95rem; color:#5e4f3a;"><a href="https://www.google.com/maps/search/Shambololo+Campsite" target="_blank" rel="noopener" style="color: #2D5016; text-decoration: underline;">Open Shambololo Campsite in Google Maps</a></p>
-      <div style="width: 100%; max-width: 600px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.322335982452!2d28.2668462!3d-15.681216699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1940c194718e3e4f%3A0xd5e17d34c1b5a45e!2sShambololo%20Lodge!5e1!3m2!1sen!2szm!4v1778670442795!5m2!1sen!2szm" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <p style="margin-top:1rem; font-family: Arial, sans-serif; font-size:0.95rem; color:#5e4f3a;"><strong>From Lusaka:</strong> Take the Great East Road (T1) south towards Chirundu. After approximately 40-45 minutes (about 50km from Lusaka city center), look for the turn-off to Shambololo on the left side of the road. The exact location is marked on Google Maps above. Always contact Clever in advance for the latest directions and to confirm the gate will be open.</p>
+      <p style="font-family: Arial, sans-serif; font-size: 0.95rem; color: #5e4f3a; max-width: 770px; margin-top: 1.5rem;">Imagine waking up to the serene view of a dam stretching out before you, surrounded by lush green grass and shaded by trees. This is Shambololo's main campsite — a peaceful haven where you can relax under the lapa, enjoy a barbecue at the braai area, and spend lazy afternoons in the shade. It's the perfect spot for happy camping, with plenty of space to unwind and connect with nature.</p>
     </div>
   </section>
 
-  <!-- Facilities -->
+  <!-- ⑥ ACTIVITIES -->
   <section id="facilities">
     <div class="section-inner">
       <h2>Facilities</h2>
@@ -500,6 +592,22 @@
     </div>
   </section>
 
+  <!-- ④ ACCESS -->
+  <section id="access">
+    <div class="section-inner">
+      <h2>Getting There</h2>
+      <div class="warning-box">
+        <strong>Google Maps location available</strong>
+        Search for "Shambololo Campsite" on Google Maps or use the link below. Confirm exact arrival instructions with Clever before you travel.
+      </div>
+      <p style="margin-bottom:1rem; font-family: Arial, sans-serif; font-size:0.95rem; color:#5e4f3a;"><a href="https://www.google.com/maps/search/Shambololo+Campsite" target="_blank" rel="noopener" style="color: #2D5016; text-decoration: underline;">Open Shambololo Campsite in Google Maps</a></p>
+      <div style="width: 100%; max-width: 600px; margin: 0 auto; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.322335982452!2d28.2668462!3d-15.681216699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1940c194718e3e4f%3A0xd5e17d34c1b5a45e!2sShambololo%20Lodge!5e1!3m2!1sen!2szm!4v1778670442795!5m2!1sen!2szm" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p style="margin-top:1rem; font-family: Arial, sans-serif; font-size:0.95rem; color:#5e4f3a;"><strong>From Lusaka:</strong> Take the Great East Road (T1) south towards Chirundu. After approximately 40-45 minutes (about 50km from Lusaka city center), look for the turn-off to Shambololo on the left side of the road. The exact location is marked on Google Maps above. Always contact Clever in advance for the latest directions and to confirm the gate will be open.</p>
+    </div>
+  </section>
+
   <!-- ⑥ ACTIVITIES -->
   <section id="activities">
     <div class="section-inner">
@@ -527,9 +635,9 @@
         <div class="gallery-photo"><img src="images/gallery-04.JPG" alt="Sunset"></div>
         <div class="gallery-photo"><img src="images/gallery-05.JPG" alt="Canoe on dam"></div>
         <div class="gallery-photo"><img src="images/gallery-06.JPG" alt="Birdlife"></div>
-        <div class="gallery-photo"><img src="images/gallery-07.JPG" alt="Hot shower block"></div>
         <div class="gallery-photo"><img src="images/gallery-08.JPG" alt="Archery"></div>
         <div class="gallery-photo"><img src="images/gallery-09.JPG" alt="Night sky"></div>
+        <div class="gallery-photo"><img src="images/gallery-10.JPG" alt="Additional campsite view"></div>
         <div class="gallery-photo"><img src="images/gallery-11.JPG" alt="Additional view"></div>
       </div>
     </div>
@@ -539,14 +647,14 @@
   <section id="video">
     <div class="section-inner">
       <h2>Campground Videos</h2>
-      <div style="display: flex; flex-direction: column; gap: 2rem; align-items: center;">
-        <div style="max-width: 560px;">
-          <h3 style="font-family: Arial, sans-serif; font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem;">Introduction Video</h3>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/QuPZOoWvxkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="videos-container">
+        <div class="video-item">
+          <h3 style="font-family: Arial, sans-serif; font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem;">Campsite Introduction</h3>
+          <iframe src="https://www.youtube.com/embed/eAxYbFaBA7c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div style="max-width: 560px;">
-          <h3 style="font-family: Arial, sans-serif; font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem;">Zambian Daily Recommendation</h3>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/anpOM3MNRbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="video-item">
+          <h3 style="font-family: Arial, sans-serif; font-size: 1rem; color: var(--brown); margin-bottom: 0.5rem;">Firepit Experience</h3>
+          <iframe src="https://www.youtube.com/embed/anpOM3MNRbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
       </div>
     </div>
